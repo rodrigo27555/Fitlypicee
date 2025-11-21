@@ -1,0 +1,707 @@
+
+
+/* ============================================== */
+
+/* === VARIÁVEIS DE CORES E TIPOGRAFIA (AVANÇADO) === */
+/* ============================================== */
+:root {
+  /* Cores Institucionais */
+  --cor-primaria-azul: #004799;
+  /* Azul Escuro (Logo/Curva/Texto) */
+  --cor-secundaria-amarelo: #f7a600;
+  /* Amarelo Institucional */
+  --cor-acao-laranja: #FB8C00;
+  /* Laranja para Ação (CTA/Blog) */
+  --cor-enfase-verde: #43a047;
+  /* Verde (Suporte/Card) */
+
+  /* Variações de Degradê */
+  --degrade-header-inicio: #004799;
+  /* Azul Primário */
+  --degrade-header-fim: #007bff;
+  /* Azul Mais Claro */
+
+  --degrade-footer-inicio: #f1f1f1;
+  /* Cinza Claro */
+  --degrade-footer-fim: #e5e5e5;
+  /* Cinza um pouco mais escuro */
+
+  /* Cores de Texto e Fundo */
+  --cor-fundo: #fff;
+  --cor-fundo-claro: #f8f8f8;
+  --cor-texto-padrao: #333;
+  --cor-texto-claro: #fff;
+  --cor-divisores: #ddd;
+
+  /* Tipografia Responsiva (usando clamp para auto-ajuste entre 2.5rem e 4rem) */
+  --tamanho-titulo-principal: clamp(2.5rem, 6vw + 1rem, 4rem);
+  --tamanho-titulo-secao: clamp(2rem, 5vw + 1rem, 3rem);
+}
+
+/* === ESTILOS GERAIS === */
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-padrao);
+  line-height: 1.6;
+}
+
+/* Título padrão para seções */
+.title {
+  font-size: var(--tamanho-titulo-secao);
+  color: var(--cor-secundaria-amarelo);
+  font-weight: 800;
+  margin: 40px 0 20px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+/* =========================== */
+/* === HEADER (COM DEGRADÊ) === */
+/* =========================== */
+header {
+  /* Substitui a curva-azul por um degradê em todo o header */
+  background: linear-gradient(90deg, var(--degrade-header-inicio) 0%, var(--degrade-header-fim) 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+  /* Altura ajustada */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  position: relative;
+  z-index: 1;
+  margin-left: 60px;
+}
+
+.logo img {
+  width: 130px;
+  /* Tamanho ajustado */
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+  /* Sombra para destacar no degradê */
+}
+
+/* Menu - ALINHAMENTO À DIREITA */
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 60px;
+  z-index: 1;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--cor-texto-claro);
+  /* Texto branco no fundo azul */
+  font-weight: bold;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid var(--cor-secundaria-amarelo);
+  /* Destaque em amarelo */
+}
+
+
+/* === CARROSSEL (SLIDER) === */
+.slider {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1600px;
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.sliders {
+  width: 400%;
+  height: 100%;
+  display: flex;
+  transition: margin-left 0.8s ease-in-out;
+}
+
+.sliders input {
+  display: none;
+}
+
+.slide {
+  width: 25%;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Movimento dos Slides */
+#radio1:checked~.first {
+  margin-left: 0;
+}
+
+#radio2:checked~.first {
+  margin-left: -25%;
+}
+
+#radio3:checked~.first {
+  margin-left: -50%;
+}
+
+#radio4:checked~.first {
+  margin-left: -75%;
+}
+
+
+/* === SEÇÃO SOBRE (Container) === */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Coluna esquerda */
+.left {
+  flex: 1;
+  background-color: var(--cor-fundo);
+  padding: 80px 60px;
+  border-right: 2px solid var(--cor-divisores);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 300px;
+}
+
+.left h1 {
+  color: var(--cor-acao-laranja);
+  font-size: var(--tamanho-titulo-principal);
+  /* Tipografia Responsiva */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 40px;
+}
+
+.info {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-icon {
+  color: var(--cor-acao-laranja);
+  font-size: 24px;
+}
+
+.info-text {
+  font-size: 1rem;
+  color: var(--cor-texto-padrao);
+  max-width: 300px;
+}
+
+/* Coluna direita */
+.right {
+  flex: 2;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 300px;
+}
+
+.right p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.right strong {
+  color: var(--cor-acao-laranja);
+}
+
+.video {
+  margin-top: 20px;
+  aspect-ratio: 16/9;
+  width: 100%;
+  max-width: 800px;
+}
+
+.video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+
+/* === SEÇÃO ABRANGÊNCIA === */
+.abrangencia-section {
+  padding: 80px 100px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.abrangencia-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.abrangencia-left {
+  flex: 1;
+  padding-right: 40px;
+  min-width: 280px;
+}
+
+.divisaoods {
+  margin-left: 10px;
+}
+
+.ods-16 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ods-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.ods-carousel .carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.ods-carousel img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.abrangencia-right .almentodefonte {
+  margin-top: 20px;
+  font-size: 22px;
+  font-family: Arial, sans-serif;
+}
+
+.abrangencia-left h1 {
+  font-size: var(--tamanho-titulo-principal);
+  /* Tipografia Responsiva */
+  font-weight: 700;
+  color: var(--cor-secundaria-amarelo);
+  line-height: 1.1;
+  margin-bottom: 40px;
+
+  text-align: center;
+}
+
+.abrangencia-left p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.divider {
+  width: 2px;
+  background-color: var(--cor-divisores);
+  align-self: stretch;
+}
+
+.abrangencia-right {
+  flex: 1;
+  padding-left: 40px;
+  min-width: 280px;
+  margin-top: 150px;
+}
+
+.abrangencia-right p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--cor-texto-padrao);
+
+}
+
+.abrangencia-right h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cor-secundaria-amarelo);
+  margin-bottom: 8px;
+}
+
+
+
+/* === DIVISOR CURVO === */
+.divisor-curvo {
+  width: 100%;
+  height: 75px;
+  background: linear-gradient(135deg, var(--cor-secundaria-amarelo), #efff64);
+  clip-path: ellipse(70% 100% at 50% 100%);
+  margin-top: 60px;
+  margin-bottom: -60px;
+}
+
+
+
+
+
+
+/* === SEÇÃO DO BLOG === */
+.blog-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px 20px;
+  background-color: var(--cor-fundo);
+  gap: 30px;
+}
+
+/* Coluna da esquerda (Blog) */
+.blog-info {
+  flex: 1;
+  max-width: 400px;
+  min-width: 300px;
+}
+
+.blog-info .title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: var(--cor-acao-laranja);
+  margin-bottom: 15px;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.blog-info .subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.blog-info .cta-button {
+  display: inline-block;
+  background-color: var(--cor-acao-laranja);
+  color: var(--cor-texto-claro);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.blog-info .cta-button:hover {
+  background-color: var(--cor-secundaria-amarelo);
+}
+
+/* Coluna da direita (Carrossel Blog) */
+.blog-carousel {
+  flex: 1.5;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--cor-acao-laranja);
+  color: var(--cor-texto-claro);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+}
+
+.arrow-prev {
+  left: -20px;
+}
+
+.arrow-next {
+  right: -20px;
+}
+
+.carousel-thumbnails {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.carousel-thumbnails img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.carousel-thumbnails img.active,
+.carousel-thumbnails img:hover {
+  opacity: 1;
+}
+
+
+/* === SEÇÃO DE LOCALIZAÇÃO === */
+.localizacao-section {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.localizacao-section h1 {
+  font-size: var(--tamanho-titulo-secao);
+  color: var(--cor-primaria-azul);
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.localizacao-section iframe {
+  width: 100%;
+  max-width: 1200px;
+  height: 450px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================== */
+/* === RODAPÉ (COM DEGRADÊ) === */
+/* =========================== */
+footer {
+  /* Aplica o degradê de cinza */
+  background: linear-gradient(0deg, var(--degrade-footer-inicio) 0%, var(--degrade-footer-fim) 100%);
+  text-align: center;
+  padding: 40px 0 20px 0;
+  /* Mais padding no topo */
+  margin-top: 60px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+footer p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+footer img {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+
+/*
+============================================================
+=== AJUSTES DE RESPONSIVIDADE (Tablets e Celulares 768px+) ===
+============================================================
+*/
+
+@media (max-width: 768px) {
+
+  /* --- Header --- */
+  header {
+    height: auto;
+    flex-direction: column;
+    padding-bottom: 15px;
+    
+  }
+
+  .logo {
+    margin: 0;
+    padding: 15px 0 0 15px;
+    align-self: flex-start;
+  }
+
+  .logo img {
+    width: 110px;
+  }
+
+  nav {
+    justify-content: center;
+    margin: 15px 0 0 0;
+  }
+
+  nav ul {
+    gap: 12px;
+  }
+
+  /* --- Slider Principal --- */
+  .slider {
+    aspect-ratio: 16 / 10;
+    height: auto;
+    margin: 20px auto;
+    width: 95%;
+  }
+ .left .info-text img {
+    display:block;
+  }
+  /* --- Container SOBRE --- */
+  .container {
+    flex-direction: column;
+  }
+
+  .left {
+    border-right: none;
+    border-bottom: 2px solid var(--cor-divisores);
+    padding: 40px 15px;
+  }
+
+  .right {
+    padding: 40px 15px;
+  }
+
+  .left h1 {
+    text-align: center;
+  }
+
+  .info-text {
+    max-width: 100%;
+  }
+
+  /* --- Abrangência --- */
+  .abrangencia-section {
+    padding: 40px 15px;
+  }
+
+  .abrangencia-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .divider {
+    width: 100%;
+    height: 2px;
+  }
+
+  .abrangencia-left,
+  .abrangencia-right {
+    padding: 0;
+  }
+
+  /* --- MVV --- */
+  .mvv-section {
+    padding: 40px 15px;
+  }
+
+  .mvv-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* --- Cargos --- */
+  .cargos-section {
+    padding: 40px 15px;
+  }
+
+  .cargo-card {
+    width: 95%;
+    max-width: 350px;
+  }
+
+  /* --- Blog --- */
+  .blog-section {
+    flex-direction: column;
+    padding: 30px 15px;
+  }
+
+  .blog-info {
+    text-align: center;
+  }
+
+  .blog-info .title {
+    text-align: center;
+  }
+
+  .blog-info .cta-button {
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    max-width: 250px;
+  }
+
+  /* CORREÇÃO DO VAZAMENTO */
+  .blog-carousel {
+    width: 100%;
+    max-width: none;
+    overflow: hidden;
+  }
+
+  .carousel-container {
+    width: 100%;
+  }
+
+  .arrow-prev {
+    left: 5px;
+  }
+
+  .arrow-next {
+    right: 5px;
+  }
+
+  .carousel-thumbnails {
+    justify-content: center;
+  }
+
+  /* --- Localização --- */
+  .localizacao-section {
+    padding: 40px 15px;
+  }
+
+  .localizacao-section iframe {
+    height: 300px;
+  }
+}
